@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Rayan NACIRI</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { display: flex; background-color: #f4f5f7; color: #333; min-height: 100vh; }
+
+        /* Sidebar gauche */
+        sidebar { width: 260px; background-color: #1a1d24; color: #fff; padding: 20px; display: flex; flex-direction: column; position: fixed; height: 100vh; overflow-y: auto; }
+        .profile { text-align: center; padding-bottom: 20px; border-bottom: 1px solid #2d323e; margin-bottom: 20px; }
+        .profile-img { width: 90px; height: 90px; border-radius: 50%; background: #2d323e; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 32px; color: #9aa0a6; border: 2px solid #3b82f6; }
+        .profile h3 { font-size: 1.1rem; margin-bottom: 4px; font-weight: 600; }
+        .profile p { font-size: 0.8rem; color: #9aa0a6; }
+
+        .nav-links { list-style: none; }
+        .nav-links li { margin-bottom: 8px; }
+        .nav-links a { color: #abb2bf; text-decoration: none; display: flex; align-items: center; padding: 10px 12px; border-radius: 6px; font-size: 0.9rem; transition: 0.2s; }
+        .nav-links a:hover, .nav-links a.active { background: #2563eb; color: #fff; }
+
+        /* Contenu principal */
+        main { margin-left: 260px; flex: 1; padding: 40px 60px; }
+        section { margin-bottom: 50px; scroll-margin-top: 40px; }
+        
+        .section-tag { font-size: 0.75rem; text-transform: uppercase; color: #d97706; font-weight: 700; letter-spacing: 1px; margin-bottom: 6px; }
+        h1 { font-size: 2.2rem; color: #111827; margin-bottom: 10px; }
+        h2 { font-size: 1.8rem; color: #111827; margin-bottom: 20px; }
+        .subtitle { font-size: 1.1rem; color: #4b5563; margin-bottom: 20px; }
+
+        /* Boutons d'en-tête */
+        .btn-group { display: flex; gap: 12px; margin-bottom: 30px; }
+        .btn { padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600; border: 1px solid #d1d5db; background: #fff; color: #374151; transition: 0.2s; }
+        .btn-primary { background: #2563eb; color: #fff; border: none; }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* Grilles & Cartes */
+        .grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 15px; }
+        .grid-projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+
+        .card { background: #fff; border-radius: 12px; padding: 24px; border: 1px solid #e5e7eb; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-stage { background: #fff; border-radius: 12px; padding: 20px; border: 1px solid #e5e7eb; }
+        .badge-stage { color: #d97706; font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; }
+
+        /* Compétences (Style CNED) */
+        .skill-box { background: #fff; border-radius: 10px; padding: 20px; text-align: center; border: 1px solid #e5e7eb; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+        .skill-icon { font-size: 28px; }
+        .skill-title { font-size: 0.85rem; font-weight: 600; color: #374151; }
+
+        /* Projets */
+        .project-card { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden; }
+        .project-img { height: 140px; background: #e0e7ff; display: flex; align-items: center; justify-content: center; font-size: 40px; color: #4f46e5; }
+        .project-body { padding: 18px; }
+        .project-status { font-size: 0.75rem; color: #059669; font-weight: 700; margin-bottom: 6px; }
+        .project-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: #111827; }
+        .project-desc { font-size: 0.85rem; color: #6b7280; margin-bottom: 12px; line-height: 1.4; }
+        .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+        .tag { background: #f3f4f6; color: #374151; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+
+        /* Contact Form */
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: #374151; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar CNED -->
+    <sidebar>
+        <div class="profile">
+            <div class="profile-img">RN</div>
+            <h3>Rayan NACIRI</h3>
+            <p>Étudiant en BTS SIO<br>Option SISR</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#accueil" class="active">🏠 Accueil</a></li>
+            <li><a href="#apropos">👤 À propos</a></li>
+            <li><a href="#parcours">🎓 Parcours</a></li>
+            <li><a href="#competences">💻 Compétences</a></li>
+            <li><a href="#projets">🚀 Projets</a></li>
+            <li><a href="#contact">✉️ Contact</a></li>
+        </ul>
+    </sidebar>
+
+    <!-- Contenu Principal -->
+    <main>
+        
+        <!-- Accueil -->
+        <section id="accueil">
+            <div class="section-tag">Portfolio</div>
+            <h1>Rayan NACIRI</h1>
+            <p class="subtitle">Étudiant en informatique — Systèmes et réseaux</p>
+            <p style="color: #6b7280; margin-bottom: 20px;">1re année BTS SIO • Option SISR (CNED)</p>
+            
+            <div class="btn-group">
+                <a href="#projets" class="btn btn-primary">Voir les projets</a>
+                <a href="#" class="btn">Voir mon CV (PDF)</a>
+                <a href="#contact" class="btn">Me contacter</a>
+            </div>
+        </section>
+
+        <!-- À propos & Stage -->
+        <section id="apropos">
+            <div class="grid-2">
+                <div class="card">
+                    <div class="section-tag">À propos de moi</div>
+                    <h2>Profil</h2>
+                    <p style="font-size: 0.95rem; line-height: 1.6; color: #4b5563;">
+                        Passionné par les infrastructures informatiques, la sécurité réseau et l'administration système, je prépare actuellement mon BTS SIO option SISR à distance via le CNED.<br><br>
+                        Fort d'un parcours technique complémentaire en systèmes et réseaux, mon objectif est de me spécialiser dans l'administration des systèmes complexes, la virtualisation et la cybersécurité.
+                    </p>
+                </div>
+                <div class="card-stage">
+                    <div class="badge-stage">Recherche de stage</div>
+                    <p style="font-size: 0.9rem; color: #4b5563; line-height: 1.5;">
+                        Je suis actuellement à la recherche d'un stage de <strong>4 à 5 semaines</strong> dans le domaine des systèmes et réseaux, à réaliser entre <strong>mai et août 2027</strong>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parcours -->
+        <section id="parcours">
+            <div class="section-tag">Formation & Expériences</div>
+            <h2>Parcours</h2>
+            
+            <div class="card" style="margin-bottom: 12px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <h3 style="font-size: 1.1rem; color:#111827;">1re année BTS SIO - Option SISR</h3>
+                        <p style="font-size: 0.85rem; color:#6b7280;">CNED de Poitiers</p>
+                    </div>
+                    <span class="tag" style="background:#e0e7ff; color:#374151;">Sept. 2026 - Présent</span>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 12px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <h3 style="font-size: 1.1rem; color:#111827;">Formation Systèmes, Réseaux & Cybersécurité</h3>
+                        <p style="font-size: 0.85rem; color:#6b7280;">Studi (Formation en ligne)</p>
+                    </div>
+                    <span class="tag">2025 - 2026</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <h3 style="font-size: 1.1rem; color:#111827;">Baccalauréat Professionnel MSPC</h3>
+                        <p style="font-size: 0.85rem; color:#6b7280;">Lycée Déodat de Séverac — Toulouse</p>
+                    </div>
+                    <span class="tag">Juin 2025</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compétences (Style CNED avec icônes) -->
+        <section id="competences">
+            <div class="section-tag">Compétences techniques</div>
+            <h2>Systèmes & Infrastructures</h2>
+            
+            <div class="grid-3">
+                <div class="skill-box"><div class="skill-icon">🪟</div><div class="skill-title">Windows Server</div></div>
+                <div class="skill-box"><div class="skill-icon">🐧</div><div class="skill-title">Debian / Ubuntu</div></div>
+                <div class="skill-box"><div class="skill-icon">🌐</div><div class="skill-title">Cisco IOS & Cisco Packet Tracer</div></div>
+                <div class="skill-box"><div class="skill-icon">🛡️</div><div class="skill-title">Active Directory & GPO</div></div>
+                <div class="skill-box"><div class="skill-icon">📦</div><div class="skill-title">VirtualBox & Hyper-V</div></div>
+                <div class="skill-box"><div class="skill-icon">📜</div><div class="skill-title">Bash & Scripting</div></div>
+            </div>
+        </section>
+
+        <!-- Projets scolaires (Épreuve E5) -->
+        <section id="projets">
+            <div class="section-tag">Réalisations</div>
+            <h2>Projets scolaires</h2>
+            
+            <div class="grid-projects">
+                <div class="project-card">
+                    <div class="project-img">⚙️</div>
+                    <div class="project-body">
+                        <div class="project-status">2026 — Réalisé</div>
+                        <div class="project-title">Gérer le patrimoine informatique</div>
+                        <div class="project-desc">Déploiement d'un réseau local d'entreprise, création d'une arborescence Active Directory et gestion des droits d'accès.</div>
+                        <div class="tags">
+                            <span class="tag">Windows Server</span>
+                            <span class="tag">VirtualBox</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">📡</div>
+                    <div class="project-body">
+                        <div class="project-status">2026 — En cours</div>
+                        <div class="project-title">Répondre aux incidents & demandes</div>
+                        <div class="project-desc">Mise en place d'un serveur de ticketing et assistance aux utilisateurs sur infrastructure réseau.</div>
+                        <div class="tags">
+                            <span class="tag">Debian</span>
+                            <span class="tag">GLPI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Zone de contact -->
+        <section id="contact">
+            <div class="section-tag">Échangeons ensemble</div>
+            <h2>Contact</h2>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <p style="margin-bottom: 12px;">📍 <strong>Localisation :</strong> Aucamville / Toulouse</p>
+                    <p style="margin-bottom: 12px;">📧 <strong>Email :</strong> rayan.naciri@email.com</p>
+                    <p style="margin-bottom: 12px;">🔗 <strong>LinkedIn :</strong> <a href="#">Profil LinkedIn</a></p>
+                    <p>🐙 <strong>GitHub :</strong> <a href="#">Profil GitHub</a></p>
+                </div>
+                
+                <div class="card">
+                    <form onsubmit="event.preventDefault(); alert('Message envoyé !');">
+                        <div class="form-group">
+                            <label>Nom</label>
+                            <input type="text" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea rows="3" placeholder="Votre message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
