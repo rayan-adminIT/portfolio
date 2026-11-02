@@ -1,258 +1,442 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Rayan NACIRI</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { display: flex; background-color: #f4f5f7; color: #333; min-height: 100vh; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio — Rayan Naciri</title>
+<meta name="description" content="Portfolio de Rayan Naciri, étudiant en BTS SIO option SISR (CNED). Recherche un stage de 4 à 5 semaines en support et services informatiques, systèmes et réseaux, entre mai et août 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f1b2d; --ink-soft: #1b2a41; --text: #25324a; --muted: #5b6b80;
+  --paper: #f4f5f7; --white: #fff; --line: #dde3ec;
+  --accent: #1d5fd6; --accent-dark: #1749a8; --accent-tint: #e8f0fd;
+  --ok: #0f8f78; --ok-tint: #e1f5f0; --warn: #a35f00; --warn-tint: #fdf1dc; --err: #b42318;
+  --radius: 12px; --side: 264px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: "Public Sans", "Segoe UI", Arial, sans-serif; background: var(--paper); color: var(--text); line-height: 1.6; display: flex; min-height: 100vh; }
+h1, h2, h3 { font-family: "Sora", "Segoe UI", Arial, sans-serif; color: var(--ink); line-height: 1.2; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid #7aa7f5; outline-offset: 2px; border-radius: 4px; }
+.hidden { display: none !important; }
 
-        /* Sidebar gauche */
-        sidebar { width: 260px; background-color: #1a1d24; color: #fff; padding: 20px; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
-        .profile { text-align: center; padding-bottom: 20px; border-bottom: 1px solid #2d323e; margin-bottom: 20px; }
-        .profile-img { width: 90px; height: 90px; border-radius: 50%; background: #2d323e; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 32px; color: #9aa0a6; border: 2px solid #3b82f6; }
-        .profile h3 { font-size: 1.1rem; margin-bottom: 4px; font-weight: 600; }
-        .profile p { font-size: 0.8rem; color: #9aa0a6; }
+/* Barre latérale */
+.side { width: var(--side); flex-shrink: 0; background: var(--ink); color: #fff; padding: 28px 20px; position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; overflow-y: auto; z-index: 100; }
+.id { text-align: center; padding-bottom: 22px; margin-bottom: 18px; border-bottom: 1px solid #263650; }
+.avatar { width: 84px; height: 84px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font: 700 1.6rem "Sora", sans-serif; margin: 0 auto 12px; overflow: hidden; border: 3px solid #2c4468; }
+.avatar img, .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.id h2 { color: #fff; font-size: 1.05rem; font-weight: 600; }
+.id p { font-size: 0.83rem; color: #9fb0c8; margin-top: 2px; }
+.nav { list-style: none; display: grid; gap: 4px; }
+.nav a { display: block; padding: 9px 12px; border-radius: 8px; color: #b8c5d9; font-size: 0.92rem; font-weight: 500; border-left: 3px solid transparent; transition: 0.2s; }
+.nav a:hover { background: var(--ink-soft); color: #fff; text-decoration: none; }
+.nav a.active { background: var(--ink-soft); color: #fff; border-left-color: #5b92f0; }
+.nav .sub a { padding: 6px 12px 6px 28px; font-size: 0.84rem; }
+.side-foot { margin-top: auto; padding-top: 22px; font-size: 0.8rem; color: #8396b0; }
+.side-foot .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #35d0b0; margin-right: 6px; }
 
-        .nav-links { list-style: none; }
-        .nav-links li { margin-bottom: 8px; }
-        .nav-links a { color: #abb2bf; text-decoration: none; display: flex; align-items: center; padding: 10px 12px; border-radius: 6px; font-size: 0.9rem; transition: 0.2s; }
-        .nav-links a:hover, .nav-links a.active { background: #2563eb; color: #fff; }
+/* Contenu */
+main { flex: 1; min-width: 0; padding: 56px clamp(24px, 5vw, 72px) 40px; }
+.wrap { max-width: 980px; margin: 0 auto; }
+section { margin-bottom: 84px; scroll-margin-top: 32px; }
+h2.title { font-size: 1.75rem; margin-bottom: 8px; }
+h3.group { font-size: 1.15rem; margin: 30px 0 14px; }
+.lead { color: var(--muted); max-width: 62ch; margin-bottom: 26px; }
+.card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-block; padding: 11px 20px; border-radius: 8px; font: 600 0.93rem "Public Sans", sans-serif; text-decoration: none; cursor: pointer; border: 1px solid var(--line); background: var(--white); color: var(--ink); transition: background 0.15s, border-color 0.15s; }
+.btn:hover { border-color: #b8c5d9; background: #fbfcfd; text-decoration: none; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+.btn.small { padding: 8px 14px; font-size: 0.85rem; }
 
-        /* Contenu principal */
-        main { flex: 1; padding: 40px 60px; }
-        section { margin-bottom: 50px; scroll-margin-top: 40px; }
-        
-        .section-tag { font-size: 0.75rem; text-transform: uppercase; color: #d97706; font-weight: 700; letter-spacing: 1px; margin-bottom: 6px; }
-        h1 { font-size: 2.2rem; color: #111827; margin-bottom: 10px; }
-        h2 { font-size: 1.8rem; color: #111827; margin-bottom: 20px; }
-        .subtitle { font-size: 1.1rem; color: #4b5563; margin-bottom: 20px; }
+/* Accueil */
+.hero { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+.hero h1 { font-size: clamp(2.2rem, 4.6vw, 3.2rem); letter-spacing: -0.02em; margin-bottom: 14px; }
+.hero .role { font-size: 1.25rem; font-family: "Sora", sans-serif; color: var(--ink); font-weight: 500; line-height: 1.35; margin-bottom: 8px; }
+.hero .tagline { color: var(--accent-dark); font-weight: 600; margin-bottom: 4px; }
+.hero .school { color: var(--muted); margin-bottom: 26px; }
+.photo { width: clamp(170px, 24vw, 250px); aspect-ratio: 1; border-radius: 50%; flex-shrink: 0; background: var(--accent-tint); color: var(--accent-dark); display: grid; place-items: center; font: 700 3.4rem "Sora", sans-serif; overflow: hidden; border: 6px solid #fff; box-shadow: 0 0 0 1px var(--line); }
 
-        /* Boutons d'en-tête */
-        .btn-group { display: flex; gap: 12px; margin-bottom: 30px; }
-        .btn { padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600; border: 1px solid #d1d5db; background: #fff; color: #374151; transition: 0.2s; }
-        .btn-primary { background: #2563eb; color: #fff; border: none; }
-        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+/* À propos */
+.about { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; align-items: start; }
+.about p + p { margin-top: 14px; }
+.about b { color: var(--ink); font-weight: 600; }
+.stage { background: var(--warn-tint); border-color: #f0d9a8; }
+.stage h3 { color: var(--warn); font-size: 1.05rem; margin-bottom: 8px; }
+.stage p { font-size: 0.95rem; color: #5a4210; }
+.stage b { color: #3d2c08; }
 
-        /* Grilles & Cartes */
-        .grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 15px; }
-        .grid-projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+/* Parcours */
+.timeline { list-style: none; position: relative; padding-left: 28px; }
+.timeline::before { content: ""; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+.timeline li { position: relative; margin-bottom: 14px; }
+.timeline li::before { content: ""; position: absolute; left: -28px; top: 28px; width: 14px; height: 14px; border-radius: 50%; background: var(--white); border: 3px solid var(--accent); }
+.timeline li.past::before { border-color: #9fb0c8; }
+.tl-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.tl-row h3 { font-size: 1.05rem; }
+.where { color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+.tl-text { font-size: 0.93rem; color: var(--text); margin-top: 10px; }
+.pill { font-size: 0.8rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #eef1f6; color: var(--text); white-space: nowrap; }
+.pill.now { background: var(--accent-tint); color: var(--accent-dark); }
 
-        .card { background: #fff; border-radius: 12px; padding: 24px; border: 1px solid #e5e7eb; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .card-stage { background: #fff; border-radius: 12px; padding: 20px; border: 1px solid #e5e7eb; }
-        .badge-stage { color: #d97706; font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; }
+/* Compétences */
+.skill-group { margin-bottom: 26px; }
+.skill-group h3 { font-size: 1.05rem; margin-bottom: 12px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.tile { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 12px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font-size: 0.86rem; font-weight: 500; color: var(--ink); }
+.tile img, .tile .mono { width: 38px; height: 38px; object-fit: contain; display: grid; place-items: center; border-radius: 8px; }
+.tile .mono { background: var(--accent-tint); color: var(--accent-dark); font: 700 0.8rem "Sora", sans-serif; }
 
-        /* Compétences */
-        .skill-box { background: #fff; border-radius: 10px; padding: 20px; text-align: center; border: 1px solid #e5e7eb; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-        .skill-icon { font-size: 28px; }
-        .skill-title { font-size: 0.85rem; font-weight: 600; color: #374151; }
+/* Certifications */
+.cert { display: flex; gap: 20px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+.cert .mono { width: 54px; height: 54px; font-size: 0.9rem; background: #fdeceb; color: #a4281d; border-radius: 10px; display: grid; place-items: center; font-weight: 700; flex-shrink: 0; }
+.cert h3 { font-size: 1.05rem; }
+.cert p { font-size: 0.9rem; color: var(--muted); margin-top: 4px; }
+.badge { font-size: 0.78rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--ok-tint); color: var(--ok); white-space: nowrap; }
 
-        /* Projets */
-        .project-card { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden; }
-        .project-img { height: 140px; background: #e0e7ff; display: flex; align-items: center; justify-content: center; font-size: 40px; color: #4f46e5; }
-        .project-body { padding: 18px; }
-        .project-status { font-size: 0.75rem; color: #059669; font-weight: 700; margin-bottom: 6px; }
-        .project-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: #111827; }
-        .project-desc { font-size: 0.85rem; color: #6b7280; margin-bottom: 12px; line-height: 1.4; }
-        .tags { display: flex; gap: 6px; flex-wrap: wrap; }
-        .tag { background: #f3f4f6; color: #374151; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+/* Projets */
+.projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; }
+.project { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.p-visual { height: 130px; display: grid; place-items: center; background: var(--accent-tint); color: var(--accent); font-size: 2.5rem; font-weight: 700; }
+.project.doing .p-visual { background: var(--warn-tint); color: var(--warn); }
+.project.done .p-visual { background: var(--ok-tint); color: var(--ok); }
+.p-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.status { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+.project h3 { font-size: 1.02rem; }
+.project p { font-size: 0.9rem; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; }
+.chip { font-size: 0.78rem; font-weight: 600; padding: 3px 9px; border-radius: 7px; background: var(--paper); border: 1px solid var(--line); color: var(--ink); }
 
-        /* Contact Form */
-        .form-group { margin-bottom: 16px; }
-        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: #374151; }
-        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.9rem; }
-    </style>
+/* Contact */
+.contact { display: grid; grid-template-columns: 1fr 1.4fr; gap: 20px; align-items: start; }
+.coords { list-style: none; display: grid; gap: 16px; }
+.coords span { display: block; font-size: 0.8rem; color: var(--muted); }
+.coords b, .coords a { font-weight: 600; font-size: 0.97rem; word-break: break-word; color: var(--ink); }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 0.88rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.field input, .field textarea { width: 100%; padding: 11px 12px; border: 1px solid #c3cddb; border-radius: 8px; font: 400 0.95rem "Public Sans", sans-serif; color: var(--ink); background: #fff; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px #cfe0fb; }
+.field textarea { resize: vertical; min-height: 120px; }
+.form-status { margin-top: 14px; font-size: 0.92rem; padding: 11px 14px; border-radius: 8px; display: none; }
+.form-status.show { display: block; }
+.form-status.ok { background: var(--ok-tint); color: #0a5f50; }
+.form-status.err { background: #fdebe9; color: var(--err); }
+footer { max-width: 980px; margin: 0 auto; padding-top: 24px; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--muted); }
+
+/* Responsive Mobile & Tablette */
+@media (max-width: 920px) {
+  body { flex-direction: column; }
+  .side { width: 100%; height: auto; flex-direction: row; align-items: center; gap: 14px; padding: 12px 16px; position: sticky; top: 0; }
+  .id { display: flex; align-items: center; gap: 10px; padding: 0; margin: 0; border: 0; text-align: left; }
+  .avatar { width: 38px; height: 38px; font-size: 0.95rem; margin: 0; border-width: 2px; }
+  .id p, .side-foot, .nav .sub { display: none; }
+  .id h2 { font-size: 0.95rem; white-space: nowrap; }
+  .nav { display: flex; overflow-x: auto; gap: 4px; flex: 1; scrollbar-width: none; }
+  .nav a { padding: 8px 11px; white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent; border-radius: 6px; }
+  .nav a.active { border-bottom-color: #5b92f0; background: var(--ink-soft); }
+  main { padding-top: 36px; padding-left: 20px; padding-right: 20px; }
+  .hero { flex-direction: column-reverse; align-items: flex-start; }
+  .about, .contact { grid-template-columns: 1fr; }
+  section { scroll-margin-top: 80px; margin-bottom: 64px; }
+}
+</style>
 </head>
 <body>
 
-    <!-- Sidebar CNED -->
-    <sidebar>
-        <div class="profile">
-            <div class="profile-img">RN</div>
-            <h3>Rayan NACIRI</h3>
-            <p>Étudiant en BTS SIO<br>Option SISR</p>
+<aside class="side">
+  <div class="id">
+    <div class="avatar" data-photo>RN</div>
+    <h2>Rayan NACIRI</h2>
+    <p>Étudiant en BTS SIO<br>Option SISR</p>
+  </div>
+  <nav aria-label="Navigation principale">
+    <ul class="nav">
+      <li><a href="#accueil" class="active">Accueil</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li class="sub"><a href="#projets-scolaires">Projets scolaires</a></li>
+      <li class="sub"><a href="#projets-pro">Projets professionnels</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="side-foot"><span class="dot"></span>Stage recherché · mai–août 2027</div>
+</aside>
+
+<main>
+<div class="wrap">
+
+  <!-- ACCUEIL -->
+  <section id="accueil">
+    <div class="hero">
+      <div>
+        <h1>Rayan NACIRI</h1>
+        <p class="role">Étudiant en informatique<br>Systèmes et réseaux</p>
+        <p class="tagline">Support et mise à disposition de services informatiques</p>
+        <p class="school">1re année BTS SIO · Option SISR (CNED)</p>
+        <div class="btns">
+          <a class="btn primary" href="#projets">Voir les projets</a>
+          <a class="btn" data-link="cv" href="#" target="_blank" rel="noopener">Voir mon CV</a>
+          <a class="btn" href="#contact">Me contacter</a>
         </div>
-        <ul class="nav-links">
-            <li><a href="#accueil">🏠 Accueil</a></li>
-            <li><a href="#apropos">👤 À propos</a></li>
-            <li><a href="#parcours">🎓 Parcours</a></li>
-            <li><a href="#competences">💻 Compétences</a></li>
-            <li><a href="#projets">🚀 Projets</a></li>
-            <li><a href="#contact">✉️ Contact</a></li>
+      </div>
+      <div class="photo" data-photo role="img" aria-label="Photo de Rayan Naciri">RN</div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="apropos">
+    <h2 class="title">Profil</h2>
+    <p class="lead">À propos de moi</p>
+    <div class="about">
+      <div class="card">
+        <p>Titulaire d’un <b>Bac Pro MSPC</b> (2025), j’ai poursuivi avec une <b>formation en systèmes, réseaux et cybersécurité</b>, puis rejoint en septembre 2026 le <b>BTS SIO option SISR</b> (Solutions d’Infrastructure, Systèmes et Réseaux) au CNED.</p>
+        <p>Mes expériences chez <b>Kiloutou</b> (maintenance d’équipements) et <b>Darty</b> (support technique et diagnostic) m’ont appris à analyser une panne, à rester clair avec l’utilisateur et à respecter des procédures.</p>
+        <p>Je vise un poste de <b>support et de mise à disposition de services informatiques</b>. Mon objectif est ensuite de me spécialiser dans l’administration des systèmes, des réseaux et la cybersécurité.</p>
+      </div>
+      <div class="card stage">
+        <h3>Recherche de stage</h3>
+        <p>Je suis actuellement à la recherche d’un stage de <b>4 à 5 semaines</b> dans les domaines du support, des systèmes et réseaux, à réaliser entre <b>mai et août 2027</b>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCOURS -->
+  <section id="parcours">
+    <h2 class="title">Parcours</h2>
+    <p class="lead">Formation et expériences</p>
+    <ul class="timeline">
+      <li class="card">
+        <div class="tl-row">
+          <div><h3>1re année BTS SIO – Option SISR</h3><p class="where">CNED de Poitiers</p></div>
+          <span class="pill now">Sept. 2026 – aujourd’hui</span>
+        </div>
+        <p class="tl-text">Formation préparant aux métiers de l’administration des systèmes et des réseaux, de la gestion des infrastructures informatiques, de la cybersécurité et du support aux utilisateurs.</p>
+      </li>
+      <li class="card past">
+        <div class="tl-row">
+          <div><h3>Maintenance d’équipements</h3><p class="where">Kiloutou</p></div>
+          <span class="pill">Expérience</span>
+        </div>
+        <p class="tl-text">Contrôle, entretien et remise en état de matériel, dans le respect des procédures de sécurité.</p>
+      </li>
+      <li class="card past">
+        <div class="tl-row">
+          <div><h3>Support technique et diagnostic</h3><p class="where">Darty</p></div>
+          <span class="pill">Expérience</span>
+        </div>
+        <p class="tl-text">Analyse des pannes, diagnostic matériel et logiciel, accompagnement des clients.</p>
+      </li>
+      <li class="card past">
+        <div class="tl-row">
+          <div><h3>Formation Systèmes, Réseaux et Cybersécurité</h3><p class="where">Formation intensive</p></div>
+          <span class="pill">2025 – 2026</span>
+        </div>
+        <p class="tl-text">Acquisition des bases en administration systèmes, réseaux et notions de cybersécurité.</p>
+      </li>
+      <li class="card past">
+        <div class="tl-row">
+          <div><h3>Baccalauréat professionnel MSPC</h3><p class="where">Lycée Déodat de Séverac, Toulouse</p></div>
+          <span class="pill">Juin 2025</span>
+        </div>
+        <p class="tl-text">Obtention du diplôme avec compétences techniques en maintenance et automatismes.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section id="competences">
+    <h2 class="title">Compétences</h2>
+    <p class="lead">En cours d’acquisition</p>
+    
+    <div class="skill-group">
+      <h3>Systèmes d’exploitation</h3>
+      <div class="tiles">
+        <div class="tile"><div class="mono">W11</div><span>Windows 11</span></div>
+        <div class="tile"><div class="mono">WS</div><span>Windows Server</span></div>
+        <div class="tile"><div class="mono">DEB</div><span>Debian</span></div>
+        <div class="tile"><div class="mono">UBU</div><span>Ubuntu</span></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>Réseaux et infrastructures</h3>
+      <div class="tiles">
+        <div class="tile"><div class="mono">IOS</div><span>Cisco IOS</span></div>
+        <div class="tile"><div class="mono">AD</div><span>Active Directory</span></div>
+        <div class="tile"><div class="mono">GPO</div><span>GPO</span></div>
+        <div class="tile"><div class="mono">DNS</div><span>DNS et DHCP</span></div>
+        <div class="tile"><div class="mono">PRT</div><span>Services d’impression</span></div>
+        <div class="tile"><div class="mono">SAV</div><span>Sauvegarde</span></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>Services et administration</h3>
+      <div class="tiles">
+        <div class="tile"><div class="mono">APA</div><span>Apache HTTP</span></div>
+        <div class="tile"><div class="mono">DB</div><span>MariaDB</span></div>
+        <div class="tile"><div class="mono">GLP</div><span>GLPI</span></div>
+        <div class="tile"><div class="mono">OCS</div><span>OCS Inventory</span></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>Outils et virtualisation</h3>
+      <div class="tiles">
+        <div class="tile"><div class="mono">VB</div><span>VirtualBox</span></div>
+        <div class="tile"><div class="mono">HV</div><span>Hyper-V</span></div>
+        <div class="tile"><div class="mono">VM</div><span>VMware</span></div>
+        <div class="tile"><div class="mono">PS</div><span>PowerShell</span></div>
+        <div class="tile"><div class="mono">SH</div><span>Bash</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <h2 class="title">Certifications</h2>
+    <p class="lead">Formation complémentaire</p>
+    <div class="cert">
+      <div class="mono">CISCO</div>
+      <div style="flex:1;">
+        <h3>Linux Essentials</h3>
+        <p>Certification validant les bases de l’administration d’un système Linux et de la ligne de commande (Cisco Networking Academy / NDG — juin 2026).</p>
+      </div>
+      <span class="badge">Obtenue</span>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section id="projets">
+    <h2 class="title">Projets</h2>
+    <p class="lead">Réalisations</p>
+    
+    <h3 class="group" id="projets-scolaires">Projets scolaires</h3>
+    <div class="projects">
+      <div class="project done">
+        <div class="p-visual">⚙️</div>
+        <div class="p-body">
+          <div class="status"><span>2026 — Réalisé</span><span>Scolaire</span></div>
+          <h3>Gérer le patrimoine informatique</h3>
+          <p><b>Inventaire matériel et logiciel</b> d’une organisation, mise en place des <b>niveaux d’habilitation</b> et gestion des <b>sauvegardes</b>.</p>
+          <div class="chips">
+            <span class="chip">OCS Inventory</span>
+            <span class="chip">VirtualBox</span>
+            <span class="chip">Sauvegarde</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project doing">
+        <div class="p-visual">📡</div>
+        <div class="p-body">
+          <div class="status"><span>2026 — En cours</span><span>Scolaire</span></div>
+          <h3>Répondre aux incidents et aux demandes d’assistance et d’évolution</h3>
+          <p><b>Collecte, suivi et orientation des demandes</b> des utilisateurs, traitement des demandes sur les services réseau, système et applicatifs.</p>
+          <div class="chips">
+            <span class="chip">Windows 11</span>
+            <span class="chip">Ubuntu</span>
+            <span class="chip">Active Directory</span>
+            <span class="chip">GLPI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="group" id="projets-pro">Projets professionnels</h3>
+    <div class="projects">
+      <div class="project">
+        <div class="p-visual">🏢</div>
+        <div class="p-body">
+          <div class="status"><span>2027 — À venir</span><span>Professionnel</span></div>
+          <h3>Gestion du parc d’une médiathèque</h3>
+          <p><b>Prototyper l’infrastructure réseau</b>. Sauvegarder les postes de travail. Gérer le déploiement de l’image système et le clonage des postes de travail.</p>
+          <div class="chips">
+            <span class="chip">Réseau</span>
+            <span class="chip">Clonage</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="p-visual">🎯</div>
+        <div class="p-body">
+          <div class="status"><span>2027 — À venir</span><span>Professionnel</span></div>
+          <h3>Projet de stage</h3>
+          <p>Projet qui sera réalisé durant le stage de première année de BTS SIO en entreprise.</p>
+          <div class="chips">
+            <span class="chip">Stage</span>
+            <span class="chip">SISR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="title">Contact</h2>
+    <p class="lead">Échangeons ensemble</p>
+    <div class="contact">
+      <div class="card">
+        <ul class="coords">
+          <li><span>Localisation</span><b>Toulouse</b></li>
+          <li><span>Téléphone</span><a href="tel:0600000000">06 XX XX XX XX</a></li>
+          <li><span>E-mail</span><a href="mailto:rayannaciri20@gmail.com">rayannaciri20@gmail.com</a></li>
+          <li><span>LinkedIn</span><a href="https://www.linkedin.com" target="_blank" rel="noopener">Profil LinkedIn</a></li>
+          <li><span>GitHub</span><a href="https://github.com" target="_blank" rel="noopener">Profil GitHub</a></li>
         </ul>
-    </sidebar>
+      </div>
+      <div class="card">
+        <!-- Formulaire fonctionnel via Formspree (remplace "votre-id" par ton code Formspree ou laisse en l'état) -->
+        <form action="https://formspree.io/f/xlgordkq" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <div class="field"><label for="f-name">Nom</label><input id="f-name" name="name" type="text" required></div>
+          <div class="field"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" required></div>
+          <div class="field"><label for="f-subject">Objet</label><input id="f-subject" name="subject" type="text"></div>
+          <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required></textarea></div>
+          <button class="btn primary" type="submit" style="width:100%">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contenu Principal -->
-    <main>
-        
-        <!-- Accueil -->
-        <section id="accueil">
-            <div class="section-tag">Portfolio</div>
-            <h1>Rayan NACIRI</h1>
-            <p class="subtitle">Étudiant en informatique — Systèmes et réseaux</p>
-            <p style="color: #6b7280; margin-bottom: 20px;">1re année BTS SIO • Option SISR (CNED)</p>
-            
-            <div class="btn-group">
-                <a href="#projets" class="btn btn-primary">Voir les projets</a>
-                <a href="#" class="btn">Voir mon CV (PDF)</a>
-                <a href="#contact" class="btn">Me contacter</a>
-            </div>
-        </section>
+</div>
+<footer>© <span id="year"></span> Rayan Naciri · Portfolio BTS SIO SISR</footer>
+</main>
 
-        <!-- À propos & Stage -->
-        <section id="apropos">
-            <div class="grid-2">
-                <div class="card">
-                    <div class="section-tag">À propos de moi</div>
-                    <h2>Profil</h2>
-                    <p style="font-size: 0.95rem; line-height: 1.6; color: #4b5563;">
-                        Passionné par les infrastructures informatiques, la sécurité réseau et l'administration système, je prépare actuellement mon BTS SIO option SISR à distance via le CNED.<br><br>
-                        Fort d'un parcours technique complémentaire en systèmes et réseaux, mon objectif est de me spécialiser dans l'administration des systèmes complexes, la virtualisation et la cybersécurité.
-                    </p>
-                </div>
-                <div class="card-stage">
-                    <div class="badge-stage">Recherche de stage</div>
-                    <p style="font-size: 0.9rem; color: #4b5563; line-height: 1.5;">
-                        Je suis actuellement à la recherche d'un stage de <strong>4 à 5 semaines</strong> dans le domaine des systèmes et réseaux, à réaliser entre <strong>mai et août 2027</strong>.
-                    </p>
-                </div>
-            </div>
-        </section>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
 
-        <!-- Parcours -->
-        <section id="parcours">
-            <div class="section-tag">Formation & Expériences</div>
-            <h2>Parcours</h2>
-            
-            <div class="card" style="margin-bottom: 12px;">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <div>
-                        <h3 style="font-size: 1.1rem; color:#111827;">1re année BTS SIO - Option SISR</h3>
-                        <p style="font-size: 0.85rem; color:#6b7280;">CNED de Poitiers</p>
-                    </div>
-                    <span class="tag" style="background:#e0e7ff; color:#374151;">Sept. 2026 - Présent</span>
-                </div>
-            </div>
+// Gestion active de la navigation au défilement
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav a");
 
-            <div class="card" style="margin-bottom: 12px;">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <div>
-                        <h3 style="font-size: 1.1rem; color:#111827;">Formation Systèmes, Réseaux & Cybersécurité</h3>
-                        <p style="font-size: 0.85rem; color:#6b7280;">Studi (Formation en ligne)</p>
-                    </div>
-                    <span class="tag">2025 - 2026</span>
-                </div>
-            </div>
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 60) {
+      current = section.getAttribute("id");
+    }
+  });
 
-            <div class="card">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <div>
-                        <h3 style="font-size: 1.1rem; color:#111827;">Baccalauréat Professionnel MSPC</h3>
-                        <p style="font-size: 0.85rem; color:#6b7280;">Lycée Déodat de Séverac — Toulouse</p>
-                    </div>
-                    <span class="tag">Juin 2025</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Compétences -->
-        <section id="competences">
-            <div class="section-tag">Compétences techniques</div>
-            <h2>Systèmes & Infrastructures</h2>
-            
-            <div class="grid-3">
-                <div class="skill-box"><div class="skill-icon">🪟</div><div class="skill-title">Windows Server</div></div>
-                <div class="skill-box"><div class="skill-icon">🐧</div><div class="skill-title">Debian / Ubuntu</div></div>
-                <div class="skill-box"><div class="skill-icon">🌐</div><div class="skill-title">Cisco IOS & Cisco Packet Tracer</div></div>
-                <div class="skill-box"><div class="skill-icon">🛡️</div><div class="skill-title">Active Directory & GPO</div></div>
-                <div class="skill-box"><div class="skill-icon">📦</div><div class="skill-title">VirtualBox & Hyper-V</div></div>
-                <div class="skill-box"><div class="skill-icon">📜</div><div class="skill-title">Bash & Scripting</div></div>
-            </div>
-        </section>
-
-        <!-- Projets -->
-        <section id="projets">
-            <div class="section-tag">Réalisations</div>
-            <h2>Projets</h2>
-            
-            <h3 style="font-size: 1.2rem; color: #374151; margin-bottom: 15px;">Projets scolaires</h3>
-            <div class="grid-projects">
-                <div class="project-card">
-                    <div class="project-img">⚙️</div>
-                    <div class="project-body">
-                        <div class="project-status">2026 — Réalisé</div>
-                        <div class="project-title">Gérer le patrimoine informatique</div>
-                        <div class="project-desc">Déploiement d'un réseau local d'entreprise, création d'une arborescence Active Directory et gestion des droits d'accès.</div>
-                        <div class="tags">
-                            <span class="tag">Windows Server</span>
-                            <span class="tag">VirtualBox</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">📡</div>
-                    <div class="project-body">
-                        <div class="project-status">2026 — En cours</div>
-                        <div class="project-title">Répondre aux incidents & demandes</div>
-                        <div class="project-desc">Mise en place d'un serveur de ticketing et assistance aux utilisateurs sur infrastructure réseau.</div>
-                        <div class="tags">
-                            <span class="tag">Debian</span>
-                            <span class="tag">GLPI</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3 style="font-size: 1.2rem; color: #374151; margin-bottom: 15px; margin-top: 25px;">Projets professionnels (Stages / Ateliers)</h3>
-            <div class="grid-projects">
-                <div class="project-card">
-                    <div class="project-img">🏢</div>
-                    <div class="project-body">
-                        <div class="project-status">2027 — À venir</div>
-                        <div class="project-title">Projet de stage 1re année</div>
-                        <div class="project-desc">Projet en milieu professionnel réalisé dans le cadre du stage de fin de première année de BTS SIO.</div>
-                        <div class="tags">
-                            <span class="tag">Stage</span>
-                            <span class="tag">SISR</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Zone de contact -->
-        <section id="contact">
-            <div class="section-tag">Échangeons ensemble</div>
-            <h2>Contact</h2>
-            
-            <div class="grid-2">
-                <div class="card">
-                    <p style="margin-bottom: 12px;">📍 <strong>Localisation :</strong> Toulouse</p>
-                    <p style="margin-bottom: 12px;">📧 <strong>Email :</strong> rayan.naciri@email.com</p>
-                    <p style="margin-bottom: 12px;">🔗 <strong>LinkedIn :</strong> <a href="#">Profil LinkedIn</a></p>
-                    <p>🐙 <strong>GitHub :</strong> <a href="#">Profil GitHub</a></p>
-                </div>
-                
-                <div class="card">
-                    <form onsubmit="event.preventDefault(); alert('Message envoyé !');">
-                        <div class="form-group">
-                            <label>Nom</label>
-                            <input type="text" placeholder="Votre nom" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea rows="3" placeholder="Votre message..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
 </body>
 </html>
