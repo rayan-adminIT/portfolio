@@ -195,54 +195,6 @@ section { margin-bottom: 70px; scroll-margin-top: 30px; }
 .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
 .tags span { font-size: 0.75rem; background: #f1f5f9; padding: 3px 8px; border-radius: 6px; font-weight: 600; color: var(--ink-soft); }
 
-/* CV SECTION */
-.cv-container {
-  display: grid;
-  gap: 20px;
-}
-.cv-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  background: var(--ink);
-  color: #fff;
-  padding: 20px 24px;
-  border-radius: 12px;
-}
-.cv-header h2 { color: #fff; font-size: 1.3rem; }
-.cv-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-.cv-block h3 {
-  font-size: 1.1rem;
-  margin-bottom: 12px;
-  color: var(--accent-dark);
-  border-bottom: 2px solid var(--line);
-  padding-bottom: 6px;
-}
-.cv-item {
-  margin-bottom: 14px;
-}
-.cv-item-title {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--ink);
-}
-.cv-item-sub {
-  font-size: 0.82rem;
-  color: var(--accent);
-  font-weight: 600;
-}
-.cv-item-desc {
-  font-size: 0.85rem;
-  color: var(--text);
-  margin-top: 4px;
-}
-
 /* CONTACT */
 .contact { display: grid; grid-template-columns: 1fr 1.3fr; gap: 20px; }
 .cinfo { display: grid; gap: 12px; }
@@ -266,7 +218,7 @@ footer { padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.85re
   .avatar { width: 36px; height: 36px; font-size: 0.9rem; margin: 0; }
   main { padding: 24px 20px; }
   .hero { flex-direction: column-reverse; align-items: flex-start; }
-  .about, .contact, .cv-grid { grid-template-columns: 1fr; }
+  .about, .contact { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -299,7 +251,6 @@ footer { padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.85re
     <a href="#apropos">👤 À propos</a>
     <a href="#parcours">🎓 Parcours</a>
     <a href="#competences">&lt;/&gt; Compétences</a>
-    <a href="#cv-section">📄 Mon CV</a>
     <a href="#certifications">🏅 Certifications</a>
     <a href="#projets">📁 Projets</a>
     <a href="#scolaires" class="sub">Projets scolaires</a>
@@ -319,10 +270,11 @@ footer { padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.85re
         <p class="kicker">Portfolio</p>
         <h1 class="name">Rayan NACIRI</h1>
         <p class="sub">Étudiant en informatique<br>Systèmes, Réseaux & Cybersécurité</p>
-        <p class="meta">1re année BTS SIO • Option SISR (CNED)</p>
+        <p class="meta">1re année BTS SIO • Option SISR</p>
         <div class="btns">
           <a class="btn" href="#projets">Voir les projets</a>
-          <a class="btn primary" href="#cv-section">Voir mon CV (CV Rayan Naciri)</a>
+          <!-- BOUTON TÉLÉCHARGEMENT DIRECT DU CV -->
+          <a class="btn primary" href="travail3.pdf" download="CV_Rayan_Naciri.pdf">Voir mon CV (CV Rayan Naciri)</a>
           <a class="btn" href="#contact">Me contacter</a>
         </div>
       </div>
@@ -337,13 +289,13 @@ footer { padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.85re
       <h1 class="title">Profil</h1>
       <div class="about">
         <div>
-          <p>Titulaire d'un baccalauréat professionnel MSPC (2025), j'ai suivi une formation intensive en systèmes, réseaux et cybersécurité avant d'intégrer le BTS SIO option SISR à distance via le CNED.</p>
-          <p style="margin-top: 10px;">Mes expériences chez VINCI Facilities, Kiloutou et Darty m'ont permis de développer une méthode rigoureuse pour l'analyse des pannes, le diagnostic et l'assistance technique aux utilisateurs.</p>
+          <p>Titulaire d'un baccalauréat professionnel MSPC, j'ai suivi une formation intensive en systèmes, réseaux et cybersécurité avant d'intégrer le BTS SIO option SISR.</p>
+          <p style="margin-top: 10px;">Mes différentes expériences professionnelles m'ont permis de développer une méthode rigoureuse pour l'analyse des pannes, le diagnostic et l'assistance technique aux utilisateurs.</p>
           <p style="margin-top: 10px;">Mon objectif est de me spécialiser dans l'administration des infrastructures informatiques, le support IT et la cybersécurité des réseaux d'entreprise.</p>
         </div>
         <div class="card">
           <h3 class="accent">Recherche de stage</h3>
-          <p>Je suis actuellement à la recherche d'un stage de 4 à 5 semaines en systèmes et réseaux entre mai et août 2027 (Permis B dispo).</p>
+          <p>Je suis actuellement à la recherche d'un stage de 4 à 5 semaines en systèmes et réseaux entre mai et août 2027.</p>
         </div>
       </div>
     </div>
@@ -358,17 +310,17 @@ footer { padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.85re
         <div class="item">
           <span class="date">2026 – 2028</span>
           <h3>BTS SIO option SISR</h3>
-          <p>CNED de Poitiers. Solutions d'Infrastructure, Systèmes et Réseaux (En formation à distance).</p>
+          <p>CNED de Poitiers. Solutions d'Infrastructure, Systèmes et Réseaux.</p>
         </div>
         <div class="item">
           <span class="date">2025 – 2026</span>
           <h3>Formation Systèmes, Réseaux & Cybersécurité</h3>
-          <p>Studi (formation en ligne). Bases de l'administration Linux/Windows et sécurité réseau.</p>
+          <p>Studi. Bases de l'administration Linux/Windows et sécurité réseau.</p>
         </div>
         <div class="item">
           <span class="date">Juin 2025</span>
           <h3>Baccalauréat Professionnel MSPC</h3>
-          <p>Lycée Déodat de Séverac – Toulouse. Technicien Maintenance des Systèmes de Production Connectés (Diplôme obtenu).</p>
+          <p>Lycée Déodat de Séverac – Toulouse. Technicien Maintenance des Systèmes de Production Connectés.</p>
         </div>
       </div>
     </div>
@@ -383,7 +335,7 @@ footer { padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.85re
       <!-- SYSTÈMES D'EXPLOITATION -->
       <h2 class="group">Systèmes d'exploitation</h2>
       <div class="skills">
-        <!-- WINDOWS 11 (LOGO OFFICIEL) -->
+        <!-- WINDOWS 11 -->
         <div class="stile">
           <div class="stile-icon">
             <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
@@ -443,7 +395,7 @@ footer { padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.85re
           <i class="devicon-apache-plain colored"></i>
           <span class="sname">Apache HTTP</span>
         </div>
-        <!-- MARIADB (LOGO DU DAUPHIN) -->
+        <!-- MARIADB -->
         <div class="stile">
           <div class="stile-icon">
             <svg viewBox="0 0 24 24" fill="#003545" xmlns="http://www.w3.org/2000/svg">
@@ -480,7 +432,7 @@ footer { padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.85re
           <i class="devicon-bash-plain colored"></i>
           <span class="sname">Bash</span>
         </div>
-        <!-- POWERSHELL (LOGO OFFICIEL) -->
+        <!-- POWERSHELL -->
         <div class="stile">
           <div class="stile-icon">
             <svg viewBox="0 0 24 24" fill="#5391FE" xmlns="http://www.w3.org/2000/svg">
@@ -493,83 +445,6 @@ footer { padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.85re
     </div>
   </section>
 
-  <!-- SECTION CV COMPLÈTE -->
-  <section id="cv-section">
-    <div class="inner">
-      <p class="kicker">Curriculum Vitae</p>
-      <h1 class="title">CV Rayan NACIRI</h1>
-      
-      <div class="card cv-container">
-        <div class="cv-header">
-          <div>
-            <h2>RAYAN NACIRI</h2>
-            <p style="color: #94a3b8; font-size: 0.9rem;">Technicien Support Informatique & Déploiement</p>
-          </div>
-          <a class="btn primary" href="travail3.pdf" download="CV_Rayan_Naciri.pdf"> Télécharger le PDF</a>
-        </div>
-
-        <div class="cv-grid">
-          <!-- EXPÉRIENCES -->
-          <div class="cv-block">
-            <h3> Expériences Professionnelles</h3>
-            
-            <div class="cv-item">
-              <div class="cv-item-title">Technicien Multitechnique & Support IT occasionnel</div>
-              <div class="cv-item-sub">VINCI Facilities • Nov 2022 & Mars/Avril 2023</div>
-              <div class="cv-item-desc">• Support utilisateur N0/N1 sur site (dépannage postes, connectique).<br>• Interventions en baie informatique (brassage réseau, maintenance matériel, NAS Synology).</div>
-            </div>
-
-            <div class="cv-item">
-              <div class="cv-item-title">Technicien de Maintenance</div>
-              <div class="cv-item-sub">Groupe KILOUTOU • Déc 2024 - Fév 2025</div>
-              <div class="cv-item-desc">• Diagnostic et maintenance préventive/corrective sur matériel de chantier.<br>• Contrôles de sécurité, remise en service et suivi des fiches d'intervention.</div>
-            </div>
-
-            <div class="cv-item">
-              <div class="cv-item-title">Technicien de Maintenance</div>
-              <div class="cv-item-sub">DARTY • Nov 2023 - Mai 2024</div>
-              <div class="cv-item-desc">• Diagnostic et remplacement de composants électromécaniques et électroniques sur schémas techniques.</div>
-            </div>
-
-            <div class="cv-item">
-              <div class="cv-item-title">Technicien de Maintenance</div>
-              <div class="cv-item-sub">JARDIGREEN • Avril - Mai 2024</div>
-              <div class="cv-item-desc">• Entretien préventif, dépannage curatif et réglages de précision sur équipements motorisés.</div>
-            </div>
-          </div>
-
-          <!-- FORMATIONS & COMPÉTENCES CV -->
-          <div class="cv-block">
-            <h3> Formations & Certifications</h3>
-            
-            <div class="cv-item">
-              <div class="cv-item-title">BTS SIO Option SISR</div>
-              <div class="cv-item-sub">CNED de Poitiers • 2026 - 2028 (En cours)</div>
-              <div class="cv-item-desc">Solutions d'Infrastructure, Systèmes et Réseaux.</div>
-            </div>
-
-            <div class="cv-item">
-              <div class="cv-item-title">Formation Systèmes, Réseaux & Cybersécurité</div>
-              <div class="cv-item-sub">Studi • 2025 - 2026</div>
-              <div class="cv-item-desc">Bases de l'administration Linux/Windows et sécurité réseau.</div>
-            </div>
-
-            <div class="cv-item">
-              <div class="cv-item-title">Bac Pro MSPC (Diplôme Obtenu)</div>
-              <div class="cv-item-sub">Lycée Déodat de Séverac (Toulouse) • Juin 2025</div>
-              <div class="cv-item-desc">Technicien Maintenance des Systèmes de Production Connectés.</div>
-            </div>
-
-            <div class="cv-item">
-              <div class="cv-item-title">Certification Numérique PIX</div>
-              <div class="cv-item-sub">Novice 1 et 2 obtenus</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CERTIFICATIONS -->
   <section id="certifications">
     <div class="inner">
@@ -577,14 +452,14 @@ footer { padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.85re
       <h1 class="title">Certifications</h1>
       <div class="timeline">
         <div class="item">
-          <span class="date">2025</span>
-          <h3>Certification PIX</h3>
-          <p>Validation du niveau Novice 1 et 2 en compétences numériques.</p>
+          <span class="date">Certification PIX</span>
+          <h3>PIX Novice - Niveau 1</h3>
+          <p>Validation officielle des compétences numériques et culture digitale.</p>
         </div>
         <div class="item">
-          <span class="date">Juin 2026</span>
-          <h3>Linux Essentials</h3>
-          <p>Cisco Networking Academy / NDG. Validation des bases de l'administration Linux.</p>
+          <span class="date">Certification PIX</span>
+          <h3>PIX Novice - Niveau 2</h3>
+          <p>Validation avancée des compétences numériques, gestion de données et sécurité.</p>
         </div>
       </div>
     </div>
